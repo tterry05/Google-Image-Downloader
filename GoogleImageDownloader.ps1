@@ -6,7 +6,9 @@ param(
     [string]$SearchQuery,
     
     [Parameter(Mandatory=$true)]
-    [string]$OutputFolder
+    [string]$OutputFolder,
+
+    [int]$MaxImages = 25
 )
 
 function Create-Directory {
@@ -24,7 +26,7 @@ function Download-GoogleImages {
     param(
         [string]$query,
         [string]$folder,
-        [int]$maxImages = 50
+        [int]$maxImages = $MaxImages
     )
     
     # Create the output directory if it doesn't exist
@@ -108,4 +110,4 @@ Write-Host "Output Folder: $OutputFolder"
 Write-Host "======================================"
 
 # Run the download function
-Download-GoogleImages -query $SearchQuery -folder $OutputFolder -maxImages 50
+Download-GoogleImages -query $SearchQuery -folder $OutputFolder -maxImages $MaxImages
